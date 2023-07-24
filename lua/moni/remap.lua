@@ -3,7 +3,9 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Mode Navigation
 vim.keymap.set('i', ';;', '<ESC>')
+vim.keymap.set('i', '::', '<ESC>')
 vim.keymap.set('v', ';;', '<ESC>')
+vim.keymap.set('v', '::', '<ESC>')
 
 -- Navigate buffers
 vim.keymap.set('n', '<S-j>', ':bnext<CR>')
@@ -22,11 +24,11 @@ vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 
 --Clipboard remaps
-vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>y', '\"+y')
 vim.keymap.set('n', '<leader>p', '"+p')
 
-vim.keymap.set('v', '<leader>y', '"+y')
-vim.keymap.set('v', '<leader>p', '"+p')
+vim.keymap.set('v', '<leader>y', '\"+y')
+vim.keymap.set('v', '<leader>p', '\"+p')
 
 --Nav
 vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
