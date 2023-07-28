@@ -6,10 +6,44 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
-local lspconfig = require('lspconfig')
+lsp.ensure_installed({
+    'bashls',
+    'cssls',
+    'dockerls',
+    'gopls',
+    'graphql',
+    'html',
+    'jsonls',
+    'lua',
+    'pyright',
+    'rust_analyzer',
+    'sqlls',
+    'tsserver',
+    'vimls',
+    'yamlls',
+})
 
--- (Optional) Configure lua language server for neovim
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.tsserver.setup {}
+lsp.format_on_save({
+    format_opts = {
+        async = false,
+        timeout_ms = 10000,
+    },
+    servers = {
+        ['lua_ls'] = {'lua'},
+        ['pyright'] = {'python'},
+        ['rust_analyzer'] = {'rust'},
+        ['null-ls'] = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
+        ['gopls'] = {'go'},
+        ['bashls'] = {'sh'},
+        ['vimls'] = {'vim'},
+        ['yamlls'] = {'yaml'},
+        ['jsonls'] = {'json'},
+        ['html'] = {'html'},
+        ['cssls'] = {'css'},
+        ['dockerls'] = {'dockerfile'},
+        ['graphql'] = {'graphql'},
+        ['sqlls'] = {'sql'},
+    }
+})
 
 lsp.setup()

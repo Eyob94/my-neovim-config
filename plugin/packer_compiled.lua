@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -129,10 +134,20 @@ _G.packer_plugins = {
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  nerdcommenter = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/nerdcommenter",
+    url = "https://github.com/preservim/nerdcommenter"
+  },
   ["night-owl"] = {
     loaded = true,
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/night-owl",
     url = "https://github.com/oxfist/night-owl.nvim"
+  },
+  ["noice.vim"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/noice.vim",
+    url = "https://github.com/folke/noice.vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -143,6 +158,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-go"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
+    url = "https://github.com/leoluz/nvim-dap-go"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -174,14 +209,19 @@ _G.packer_plugins = {
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  tokyonight = {
+  ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/moni/.local/share/nvim/site/pack/packer/start/tokyonight",
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
   undotree = {
@@ -193,6 +233,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/moni/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/moni/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 

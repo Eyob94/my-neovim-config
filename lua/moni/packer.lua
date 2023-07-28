@@ -1,7 +1,10 @@
 return require("packer").startup(function(use)
 	use 'wbthomason/packer.nvim'
-	
-	-- fuzzy finder plugins
+    
+    -- tmux plugins
+    use 'christoomey/vim-tmux-navigator'
+
+    -- fuzzy finder plugins
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		-- or                            , branch = '0.1.x',
@@ -16,6 +19,12 @@ return require("packer").startup(function(use)
     use ({
         'folke/tokyonight.nvim',
         as = 'tokyonight',
+
+        vim.cmd('colorscheme tokyonight-night')
+    })
+    use ({
+        'catppuccin/nvim',
+        as = 'catppuccin',
     })
 
 	-- nvim-tree plugins
@@ -35,8 +44,8 @@ return require("packer").startup(function(use)
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'rafamadriz/friendly-snippets'
-	
-	-- treesitter plugins
+
+    -- treesitter plugins
 	use (
 		'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}
 	)
@@ -72,8 +81,39 @@ return require("packer").startup(function(use)
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 	}
-	
+    use 'kabouzeid/nvim-lspinstall'	
 	-- autopair plugins
 	use 'windwp/nvim-autopairs'
+
+    --debugger
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'leoluz/nvim-dap-go'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
+
+    --comment plugins
+    use 'preservim/nerdcommenter'
+
+    --command line plugins
+    use ({
+        'folke/noice.nvim',
+        requires={
+            'MunifTanjim/nui.nvim',
+        }
+    })
+
+    use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+
+    }
+
+    use "mxsdev/nvim-dap-vscode-js"
+    
+    -- lsp formatting
+    use 'jose-elias-alvarez/null-ls.nvim'
+
 end)
 
