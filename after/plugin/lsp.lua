@@ -1,9 +1,9 @@
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp.default_keymaps({ buffer = bufnr })
 end)
 
 lsp.ensure_installed({
@@ -14,7 +14,6 @@ lsp.ensure_installed({
     'graphql',
     'html',
     'jsonls',
-    'lua',
     'pyright',
     'rust_analyzer',
     'sqlls',
@@ -29,20 +28,20 @@ lsp.format_on_save({
         timeout_ms = 10000,
     },
     servers = {
-        ['lua_ls'] = {'lua'},
-        ['pyright'] = {'python'},
-        ['rust_analyzer'] = {'rust'},
-        ['null-ls'] = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
-        ['gopls'] = {'go'},
-        ['bashls'] = {'sh'},
-        ['vimls'] = {'vim'},
-        ['yamlls'] = {'yaml'},
-        ['jsonls'] = {'json'},
-        ['html'] = {'html'},
-        ['cssls'] = {'css'},
-        ['dockerls'] = {'dockerfile'},
-        ['graphql'] = {'graphql'},
-        ['sqlls'] = {'sql'},
+        ['lua_ls'] = { 'lua' },
+        ['pyright'] = { 'python' },
+        ['rust_analyzer'] = { 'rust' },
+        ['null-ls'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        ['gopls'] = { 'go' },
+        ['bashls'] = { 'sh' },
+        ['vimls'] = { 'vim' },
+        ['yamlls'] = { 'yaml' },
+        ['jsonls'] = { 'json' },
+        ['html'] = { 'html' },
+        ['cssls'] = { 'css' },
+        ['dockerls'] = { 'dockerfile' },
+        ['graphql'] = { 'graphql' },
+        ['sqlls'] = { 'sql' },
     }
 })
 

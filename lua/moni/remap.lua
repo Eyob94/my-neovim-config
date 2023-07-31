@@ -1,6 +1,10 @@
 local opts = { noremap = true, silent = true }
+
 -- .netrw configs
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+
+-- cmdline entry
+vim.keymap.set('n', ';', ':')
 
 -- Mode Navigation
 vim.keymap.set('i', ';;', '<ESC>')
@@ -15,7 +19,6 @@ vim.keymap.set('n', '<S-j>', '<C-w>h')
 vim.keymap.set('n', '<S-l>', '<C-w>l')
 vim.keymap.set('n', '<S-i>', '<C-w>k')
 vim.keymap.set('n', '<S-k>', '<C-w>j')
-
 --Code Block navigation
 vim.keymap.set('v', 'K', ':m \'>+1<CR>gv=gv')
 vim.keymap.set('v', 'I', ':m \'<-2<CR>gv=gv')
@@ -35,7 +38,7 @@ vim.keymap.set('n', 'H', 'I')
 
 
 -- Nvim Tree Keymaps
-vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
 
 
 --Clipboard remaps
