@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 
 -- .netrw configs
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 
 -- cmdline entry
 vim.keymap.set('n', ';', ':')
@@ -19,6 +19,7 @@ vim.keymap.set('n', '<S-j>', '<C-w>h')
 vim.keymap.set('n', '<S-l>', '<C-w>l')
 vim.keymap.set('n', '<S-i>', '<C-w>k')
 vim.keymap.set('n', '<S-k>', '<C-w>j')
+
 --Code Block navigation
 vim.keymap.set('v', 'K', ':m \'>+1<CR>gv=gv')
 vim.keymap.set('v', 'I', ':m \'<-2<CR>gv=gv')
@@ -32,10 +33,29 @@ vim.keymap.set('v', 'i', 'k')
 vim.keymap.set('v', 'j', 'h')
 vim.keymap.set('v', 'k', 'j')
 
+vim.keymap.set('n', 'mi', 'M')
+vim.keymap.set('n', 'to', 'H')
+vim.keymap.set('n', 'bo', 'L')
+
 -- Insert
 vim.keymap.set('n', 'h', 'i')
 vim.keymap.set('n', 'H', 'I')
 
+--delete and change navigation
+
+for i = 0, 999 do
+    --delete
+    vim.keymap.set('n', 'd' .. i .. 'i', 'd' .. i .. 'k', opts)
+    vim.keymap.set('n', 'd' .. i .. 'k', 'd' .. i .. 'j', opts)
+    vim.keymap.set('n', 'd' .. i .. 'j', 'd' .. i .. 'h', opts)
+    vim.keymap.set('n', 'dh', 'di', opts)
+
+    --change
+    vim.keymap.set('n', 'c' .. i .. 'i', 'c' .. i .. 'k', opts)
+    vim.keymap.set('n', 'c' .. i .. 'k', 'c' .. i .. 'j', opts)
+    vim.keymap.set('n', 'c' .. i .. 'j', 'c' .. i .. 'h', opts)
+    vim.keymap.set('n', 'ch', 'ci', opts)
+end
 
 -- Nvim Tree Keymaps
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
@@ -45,8 +65,8 @@ vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('n', '<leader>p', '"+p')
 
-vim.keymap.set('v', '<leader>y', '\"+y')
-vim.keymap.set('v', '<leader>p', '\"+p')
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('v', '<leader>p', '"+p')
 
 
 --Tmux Navigation
@@ -68,7 +88,7 @@ vim.keymap.set('n', '<M-u>', '<cmd>lua require("dapui").toggle()<CR>', opts)
 --tab navigation
 vim.keymap.set('n', 'tn', ':tabnext<CR>')
 vim.keymap.set('n', 'tp', ':tabprevious<CR>')
-vim.keymap.set('n', 'tc', ':tabclose<CR>')
+vim.keymap.set('n', 'tq', ':tabclose<CR>')
 vim.keymap.set('n', 'te', ':tabedit<CR>')
 vim.keymap.set('n', 'ts', ':tab split<CR>')
 vim.keymap.set('n', 'tv', ':tab vsplit<CR>')
@@ -79,10 +99,25 @@ vim.keymap.set('n', 'tv', ':tab vsplit<CR>')
 --lsp binds
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-vim.keymap.set('n', 'm', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+vim.keymap.set('n', 'gpr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+vim.keymap.set('n', 'gpi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+vim.keymap.set('n', 'M', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 vim.keymap.set('n', 'T', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-vim.keymap.set('n', 'pe', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
+vim.keymap.set('n', 'Ne', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
 vim.keymap.set('n', 'ne', '<cmd>lua vim.diagnostic.goto_next({border="rounded"})<CR>', opts)
 vim.keymap.set('n', 'gl', '<cmd>lua vim.lsp.diagnostic.open_float()<CR>', opts)
+
+vim.keymap.set('n', 'gx', '<cmd>lua require("goto-preview").close_all_win()<CR>', opts)
+vim.keymap.set('n', 'gr', '<cmd>lua require("goto-preview").goto_preview_references()<CR>', opts)
+vim.keymap.set('n', 'gi', '<cmd>lua require("goto-preview").goto_preview_implementation()<CR>', opts)
+vim.keymap.set('n', 'm', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>', opts)
+
+-- scrolling
+
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
+
+-- trouble
+
+vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', opts)

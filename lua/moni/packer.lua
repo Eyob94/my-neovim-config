@@ -11,7 +11,14 @@ return require("packer").startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    use 'folke/trouble.nvim'
+    use 'rmagatti/goto-preview'
+
     --color theme plugins
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine'
+    })
     use({
         'oxfist/night-owl.nvim',
         as = 'night-owl'
@@ -53,7 +60,19 @@ return require("packer").startup(function(use)
     -- undo plugins
     use 'mbbill/undotree'
 
+    -- git plugins
     use 'tpope/vim-fugitive'
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require('gitsigns').setup({
+                current_line_blame = true,
+                current_line_blame_opts = {
+                    delay = 150,
+                },
+            })
+        end
+    }
 
     -- lsp plugins
     use {
@@ -84,14 +103,29 @@ return require("packer").startup(function(use)
     use 'kabouzeid/nvim-lspinstall'
     -- autopair plugins
     use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
 
     --debugger
-    use 'mfussenegger/nvim-dap'
+    use { 'mfussenegger/nvim-dap',
+        opt = true,
+        module = { 'dap' },
+        config = function()
+            require("dap").setup()
+        end,
+        disable = false,
+    }
+
+
     use 'rcarriga/nvim-dap-ui'
     use 'leoluz/nvim-dap-go'
     use 'theHamsta/nvim-dap-virtual-text'
     use 'nvim-telescope/telescope-dap.nvim'
-
+    use "mxsdev/nvim-dap-vscode-js"
+    use {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+    }
     --comment plugins
     use 'preservim/nerdcommenter'
 
@@ -104,14 +138,7 @@ return require("packer").startup(function(use)
     })
     use 'rcarriga/nvim-notify'
 
-    use {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
 
-    }
-
-    use "mxsdev/nvim-dap-vscode-js"
 
     -- lsp formatting
     use 'jose-elias-alvarez/null-ls.nvim'
@@ -124,18 +151,6 @@ return require("packer").startup(function(use)
             require('distant').setup {
                 ['*'] = require('distant.settings').chip_default()
             }
-        end
-    }
-
-    use {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require('gitsigns').setup({
-                current_line_blame = true,
-                current_line_blame_opts = {
-                    delay = 150,
-                },
-            })
         end
     }
 end)

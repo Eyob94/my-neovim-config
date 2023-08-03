@@ -19,7 +19,7 @@ require('tokyonight').setup({
     dim_inactive = true,
     lualine_bold = false,
 
-    on_highlights = function (hl, c)
+    on_highlights = function(hl, c)
         local prompt = "#2d3149"
         local border = '#C098FF'
         hl.TelescopeNormal = {
@@ -37,7 +37,7 @@ require('tokyonight').setup({
             bg = prompt,
             fg = prompt,
         }
-        hl.TelescopePromptTitle ={
+        hl.TelescopePromptTitle = {
             bg = prompt,
             fg = prompt,
         }
@@ -50,4 +50,8 @@ require('tokyonight').setup({
             fg = c.fg_dark,
         }
     end,
+    on_colors = function(colors)
+        colors.error = '#ff0000'
+        colors.debug = '#ff0000'
+    end
 })
