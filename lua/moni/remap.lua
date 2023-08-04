@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-
+vim.g.mapleader = " "
 -- .netrw configs
 vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 
@@ -120,4 +120,8 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- trouble
 
-vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', opts)
+vim.keymap.set('n', '<leader>tl', '<cmd>TroubleToggle<cr>', opts)
+
+
+--wrapping
+vim.keymap.set('n', '<M-z>', '<cmd>set wrap!<CR>', opts)
