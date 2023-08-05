@@ -1,6 +1,14 @@
 return require("packer").startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    --dashboard
+    use {
+        'glepnir/dashboard-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
+
+    use 'goolord/alpha-nvim'
+
     -- tmux plugins
     use 'christoomey/vim-tmux-navigator'
 
@@ -27,11 +35,14 @@ return require("packer").startup(function(use)
         'folke/tokyonight.nvim',
         as = 'tokyonight',
 
-        vim.cmd('colorscheme tokyonight-night')
     })
     use({
         'catppuccin/nvim',
         as = 'catppuccin',
+    })
+    use({
+        'nyoom-engineering/oxocarbon.nvim',
+        as = 'oxocarbon',
     })
 
     -- nvim-tree plugins
@@ -153,4 +164,15 @@ return require("packer").startup(function(use)
             }
         end
     }
+
+
+    --session manager
+    use 'rmagatti/auto-session'
+
+    --folder openet
+    use 'willthbill/opener.nvim'
+
+
+    --indent lines
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
