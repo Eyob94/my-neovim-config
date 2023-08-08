@@ -175,4 +175,15 @@ return require("packer").startup(function(use)
 
     --indent lines
     use 'lukas-reineke/indent-blankline.nvim'
+
+
+    --ChatGPT plugin
+    --use({
+    --'jackMort/ChatGPT.nvim',
+    --requires = {
+    --'MunifTanjim/nui.nvim',
+    --'nvim-lua/plenary.nvim',
+    --'nvim-telescope/telescope.nvim'
+    --}
+    --})
 end)

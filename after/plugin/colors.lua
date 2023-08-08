@@ -3,8 +3,8 @@ function ColorMyScreen(color)
 
     vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(1, 'Normal', { bg = 'none' })
-    vim.api.nvim_set_hl(1, 'NormalFloat', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    vim.api.nvim_set_hl(1, 'NormalFloat', { bg = '#ff00ff' })
 end
 
 ColorMyScreen('oxocarbon')

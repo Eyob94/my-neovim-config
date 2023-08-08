@@ -21,8 +21,8 @@ vim.keymap.set('n', '<S-i>', '<C-w>k')
 vim.keymap.set('n', '<S-k>', '<C-w>j')
 
 --Code Block navigation
-vim.keymap.set('v', 'K', ':m \'>+1<CR>gv=gv')
-vim.keymap.set('v', 'I', ':m \'<-2<CR>gv=gv')
+vim.keymap.set('v', '<S-k>', ':m \'>+1<CR>gv=gv', opts)
+vim.keymap.set('v', '<S-i>', ':m \'<-2<CR>gv=gv', opts)
 
 -- Navigation
 vim.keymap.set('n', 'i', 'k')
@@ -55,7 +55,15 @@ for i = 0, 999 do
     vim.keymap.set('n', 'c' .. i .. 'k', 'c' .. i .. 'j', opts)
     vim.keymap.set('n', 'c' .. i .. 'j', 'c' .. i .. 'h', opts)
     vim.keymap.set('n', 'ch', 'ci', opts)
+
+    --wrap
+    vim.keymap.set('n', 'vi', 'vh', opts)
 end
+
+
+
+
+
 
 -- Nvim Tree Keymaps
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
