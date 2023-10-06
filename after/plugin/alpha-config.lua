@@ -69,7 +69,7 @@ dashboard.section.buttons.val = {
 
 
 local function footer()
-    local lines = { " ", "  ", "   ", " ", " ", " ", os.date(" %a, %d %b %Y %h:%M") }
+    local lines = { " ", "  ", "   ", " ", " ", " ", os.date(" %a, %d %b %Y %H:%M") }
     return table.concat(lines, "\n\n\n")
 end
 

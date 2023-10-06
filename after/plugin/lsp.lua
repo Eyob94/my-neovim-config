@@ -8,6 +8,7 @@ end)
 
 lsp.ensure_installed({
     'bashls',
+    'clangd',
     'cssls',
     'dockerls',
     'gopls',
@@ -41,7 +42,8 @@ lsp.format_on_save({
         ['cssls'] = { 'css' },
         ['dockerls'] = { 'dockerfile' },
         ['graphql'] = { 'graphql' },
-        ['sqlls'] = { 'sql' },
+        -- ['sqlls'] = { 'sql' },
+        ['clangd'] = { 'c', 'cpp' },
     }
 })
 

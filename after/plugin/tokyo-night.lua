@@ -50,8 +50,4 @@ require('tokyonight').setup({
             fg = c.fg_dark,
         }
     end,
-    on_colors = function(colors)
-        colors.error = '#ff0000'
-        colors.debug = '#ff0000'
-    end
 })

@@ -6,9 +6,8 @@ vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 -- cmdline entry
 vim.keymap.set('n', ';', ':')
 
--- Mode Navigation
-vim.keymap.set('i', ';;', '<ESC>')
-vim.keymap.set('v', ';;', '<ESC>')
+vim.keymap.set('i', '<C-j>', '<Esc>')
+vim.keymap.set('v', '<C-j>', '<Esc>')
 
 -- Navigate buffers
 vim.keymap.set('n', '<Tab>i', ':bnext<CR>')
@@ -28,18 +27,21 @@ vim.keymap.set('v', '<S-i>', ':m \'<-2<CR>gv=gv', opts)
 vim.keymap.set('n', 'i', 'k')
 vim.keymap.set('n', 'j', 'h')
 vim.keymap.set('n', 'k', 'j')
+vim.keymap.set('n', 'H', 'I')
 
 vim.keymap.set('v', 'i', 'k')
 vim.keymap.set('v', 'j', 'h')
 vim.keymap.set('v', 'k', 'j')
 
-vim.keymap.set('n', 'mi', 'M')
+vim.keymap.set('n', '<C-m>', 'M')
 vim.keymap.set('n', 'to', 'H')
 vim.keymap.set('n', 'bo', 'L')
 
 -- Insert
 vim.keymap.set('n', 'h', 'i')
 vim.keymap.set('n', 'H', 'I')
+vim.keymap.set('v', 'h', 'i')
+vim.keymap.set('v', 'H', 'I')
 
 --delete and change navigation
 
@@ -57,7 +59,7 @@ for i = 0, 999 do
     vim.keymap.set('n', 'ch', 'ci', opts)
 
     --wrap
-    vim.keymap.set('n', 'vi', 'vh', opts)
+    vim.keymap.set('v', 'vi', 'vh', opts)
 end
 
 
@@ -67,6 +69,8 @@ end
 
 -- Nvim Tree Keymaps
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
+vim.keymap.set('i', '<C-b>', '<cmd>:NvimTreeToggle<CR>', opts)
+vim.keymap.set('v', '<C-b>', ':NvimTreeToggle<CR>', opts)
 
 
 --Clipboard remaps
@@ -124,6 +128,13 @@ vim.keymap.set('n', 'm', '<cmd>lua require("goto-preview").goto_preview_definiti
 
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
+
+-- navigate search
+vim.keymap.set('n', 'nn', 'nzz')
+vim.keymap.set('n', 'np', 'Nzz')
+
+
 
 
 -- trouble
