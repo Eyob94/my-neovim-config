@@ -44,6 +44,10 @@ return require("packer").startup(function(use)
         'nyoom-engineering/oxocarbon.nvim',
         as = 'oxocarbon',
     })
+    use({
+        'EdenEast/nightfox.nvim',
+        as = 'nightfox',
+    })
 
     -- nvim-tree plugins
     use 'nvim-tree/nvim-tree.lua'
@@ -67,6 +71,11 @@ return require("packer").startup(function(use)
     use(
         'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }
     )
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
 
     -- undo plugins
     use 'mbbill/undotree'
@@ -169,7 +178,7 @@ return require("packer").startup(function(use)
 
 
     --indent lines
-    use 'lukas-reineke/indent-blankline.nvim'
+    -- use 'lukas-reineke/indent-blankline.nvim'
 
 
     --ChatGPT plugin
@@ -182,12 +191,15 @@ return require("packer").startup(function(use)
     --}
     --})
     --refactoring
-    use 'ThePrimeagen/refactoring.nvim'
+    use "ThePrimeagen/refactoring.nvim"
 
+
+    --surround nvim
+    use("tpope/vim-surround")
 
     -- session manager
     use {
-        'rmagatti/auto-session',
+        "rmagatti/auto-session",
         config = function()
             require("auto-session").setup {
                 log_level = "error",

@@ -27,7 +27,6 @@ require('null-ls').setup({
         formatting.black,
         formatting.isort,
         formatting.rustfmt,
-        formatting.gofmt,
         formatting.gofumpt,
         formatting.lua_format,
         formatting.sqlfmt,
