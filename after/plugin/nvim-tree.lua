@@ -102,7 +102,7 @@ end
 require('nvim-tree').setup({
     hijack_netrw = true,
     on_attach = on_attach,
-    sort_by = 'case-sensitive',
+    sort_by = 'case_sensitive',
     update_cwd = true,
     hijack_cursor = true,
     open_on_tab = true,
@@ -120,9 +120,6 @@ require('nvim-tree').setup({
         side = 'left',
         number = true,
         relativenumber = true,
-        mappings = {
-            custom_only = false,
-        },
 
         float = {
             enable = false,

@@ -14,7 +14,7 @@ return require("packer").startup(function(use)
 
     -- fuzzy finder plugins
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -44,6 +44,10 @@ return require("packer").startup(function(use)
         'nyoom-engineering/oxocarbon.nvim',
         as = 'oxocarbon',
     })
+    use({
+        'EdenEast/nightfox.nvim',
+        as = 'nightfox',
+    })
 
     -- nvim-tree plugins
     use 'nvim-tree/nvim-tree.lua'
@@ -67,6 +71,11 @@ return require("packer").startup(function(use)
     use(
         'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }
     )
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
 
     -- undo plugins
     use 'mbbill/undotree'
@@ -120,9 +129,6 @@ return require("packer").startup(function(use)
     use { 'mfussenegger/nvim-dap',
         opt = true,
         module = { 'dap' },
-        config = function()
-            require("dap").setup()
-        end,
         disable = false,
     }
 
@@ -138,7 +144,6 @@ return require("packer").startup(function(use)
         run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
     }
     --comment plugins
-    use 'preservim/nerdcommenter'
 
     --command line plugins
     use({
@@ -167,14 +172,13 @@ return require("packer").startup(function(use)
 
 
     --session manager
-    use 'rmagatti/auto-session'
 
-    --folder openet
+    --folder opener
     use 'willthbill/opener.nvim'
 
 
     --indent lines
-    use 'lukas-reineke/indent-blankline.nvim'
+    -- use 'lukas-reineke/indent-blankline.nvim'
 
 
     --ChatGPT plugin
@@ -186,4 +190,42 @@ return require("packer").startup(function(use)
     --'nvim-telescope/telescope.nvim'
     --}
     --})
+    --refactoring
+    use "ThePrimeagen/refactoring.nvim"
+
+
+    --surround nvim
+    use("tpope/vim-surround")
+
+    -- session manager
+    use {
+        "rmagatti/auto-session",
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+            }
+        end
+    }
+    use("JoosepAlviste/nvim-ts-context-commentstring") -- Changes commentstring to use based on cursor position
+    use({
+        "numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup({
+                padding = true,
+                sticky = true,
+                ignore = nil,
+                toggler = { line = "<leader>cc", block = "<leader>cbc" },
+                opleader = { line = "<leader>c", block = "<leader>cb" },
+                extra = { above = "<leader>cO", below = "<leader>co", eol = "<leader>cA" },
+                mappings = { basic = true, extra = true },
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+                post_hook = nil,
+            })
+        end,
+    })
+
+
+    -- scroll animation
+    use { 'echasnovski/mini.nvim', branch = 'stable' }
 end)

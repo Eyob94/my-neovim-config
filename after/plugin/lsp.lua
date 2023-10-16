@@ -4,19 +4,23 @@ lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
+    vim.keymap.set('n', '<leader>i', vim.lsp.buf.code_action, { buffer = bufnr })
 end)
 
 lsp.ensure_installed({
     'bashls',
+    'clangd',
     'cssls',
     'dockerls',
+    'gofmt',
     'gopls',
+    'goimports',
     'graphql',
     'html',
     'jsonls',
     'pyright',
     'rust_analyzer',
-    'sqlls',
+    'sqls',
     'tsserver',
     'vimls',
     'yamlls',
@@ -33,6 +37,8 @@ lsp.format_on_save({
         ['rust_analyzer'] = { 'rust' },
         ['null-ls'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         ['gopls'] = { 'go' },
+        ['gofmt'] = { 'go' },
+        ['goimports'] = { 'go' },
         ['bashls'] = { 'sh' },
         ['vimls'] = { 'vim' },
         ['yamlls'] = { 'yaml' },
@@ -42,6 +48,7 @@ lsp.format_on_save({
         ['dockerls'] = { 'dockerfile' },
         ['graphql'] = { 'graphql' },
         ['sqlls'] = { 'sql' },
+        ['clangd'] = { 'c', 'cpp' },
     }
 })
 

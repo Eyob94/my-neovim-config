@@ -7,14 +7,15 @@ require('telescope').setup({
     defaults = {
         mappings = {
             i = {
-                ["<esc>"] = actions.close,
+                ["<M-n>"] = actions.move_selection_next,
+                ["<M-p>"] = actions.move_selection_previous,
             },
             n = {
                 ["<esc>"] = actions.close,
-                ["i"] = actions.move_selection_previous,
-                ["k"] = actions.move_selection_next,
-                ["I"] = actions.move_to_top,
-                ["K"] = actions.move_to_bottom,
+                ["k"] = actions.move_selection_previous,
+                ["j"] = actions.move_selection_next,
+                ["K"] = actions.move_to_top,
+                ["J"] = actions.move_to_bottom,
                 ["l"] = actions.select_default,
                 ["q"] = actions.close,
             }

@@ -1,10 +1,7 @@
 function ColorMyScreen(color)
-    color = color or 'tokyonight-night'
+    color = color or "carbonfox"
 
     vim.cmd.colorscheme(color)
-
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-    vim.api.nvim_set_hl(1, 'NormalFloat', { bg = '#ff00ff' })
 end
 
-ColorMyScreen('oxocarbon')
+ColorMyScreen()

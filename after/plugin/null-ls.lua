@@ -27,15 +27,16 @@ require('null-ls').setup({
         formatting.black,
         formatting.isort,
         formatting.rustfmt,
-        formatting.gofmt,
         formatting.gofumpt,
         formatting.lua_format,
-        formatting.sqlformat,
-        formatting.sqlformat,
+        formatting.sqlfmt,
+        formatting.clang_format,
 
         diagnostics.flake8,
         diagnostics.eslint_d,
         diagnostics.golangci_lint,
+        diagnostics.cpplint,
+        diagnostics.sqlfluff,
 
         code_actions.eslint_d,
         code_actions.impl
