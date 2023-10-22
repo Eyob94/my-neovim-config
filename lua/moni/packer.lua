@@ -1,6 +1,9 @@
 return require("packer").startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    --motion
+    use 'ggandor/leap.nvim'
+
     --dashboard
     use {
         'glepnir/dashboard-nvim',

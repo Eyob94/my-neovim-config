@@ -31,11 +31,11 @@ require('nvim-treesitter.configs').setup {
             enable = true,
             set_jumps = true,
             goto_next_start = {
-                ["nf"] = "@function.outer",
+                ["<leader>nf"] = "@function.outer",
 
             },
             goto_previous_start = {
-                ["<leader>nf"] = "@function.outer",
+                ["<leader>Nf"] = "@function.outer",
             },
         }
 

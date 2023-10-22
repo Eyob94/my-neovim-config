@@ -6,8 +6,6 @@ vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 -- cmdline entry
 vim.keymap.set('n', ';', ':')
 
-vim.keymap.set('i', '<C-j>', '<Esc>')
-vim.keymap.set('v', '<C-j>', '<Esc>')
 
 -- Navigate buffers
 vim.keymap.set('n', '<Tab>j', ':bnext<CR>')
