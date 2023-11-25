@@ -1,42 +1,43 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require("lsp-zero").preset({})
 
 lsp.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
-    lsp.default_keymaps({ buffer = bufnr })
-    vim.keymap.set('n', '<leader>i', vim.lsp.buf.code_action, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>fr", function()
-        vim.lsp.buf.format({
-            formatting_options = {
-                -- trimTrailingWhitespace = true,
-                -- trimFinalNewLines = true,
-                -- insertFinalNewline = true,
-                insert_final_newline = true,
-            },
-            timeout_ms = 2500,
-            -- async = true,
-        })
-    end)
-
+	-- see :help lsp-zero-keybindings
+	-- to learn the available actions
+	lsp.default_keymaps({ buffer = bufnr })
+	vim.keymap.set("n", "<leader>i", vim.lsp.buf.code_action, { buffer = bufnr })
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+	vim.keymap.set("n", "<leader>lf", function()
+		vim.lsp.buf.format({
+			formatting_options = {
+				-- trimTrailingWhitespace = true,
+				-- trimFinalNewLines = true,
+				-- insertFinalNewline = true,
+				insert_final_newline = true,
+			},
+			timeout_ms = 2500,
+			-- async = true,
+		})
+	end)
 end)
 
 lsp.ensure_installed({
-    'bashls',
-    'clangd',
-    'cssls',
-    'dockerls',
-    -- 'gofmt',
-    'gopls',
-    -- 'goimports',
-    'graphql',
-    'html',
-    'jsonls',
-    'pyright',
-    'rust_analyzer',
-    'sqls',
-    'tsserver',
-    'vimls',
-    'yamlls',
+	"bashls",
+	"clangd",
+	"cssls",
+	"dockerls",
+	-- 'gofmt',
+	"gopls",
+	-- 'goimports',
+	"graphql",
+	"html",
+	"jsonls",
+    "svelte",
+	"pyright",
+	"rust_analyzer",
+	"sqlls",
+	"tsserver",
+	"vimls",
+	"yamlls",
 })
 
 -- lsp.format_on_save({

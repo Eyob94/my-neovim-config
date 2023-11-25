@@ -1,1 +1,1 @@
-require('opener').setup {}
+-- require('opener').setup {}

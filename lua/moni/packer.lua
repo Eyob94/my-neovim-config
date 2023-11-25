@@ -1,234 +1,247 @@
 return require("packer").startup(function(use)
-    use 'wbthomason/packer.nvim'
+	use("wbthomason/packer.nvim")
 
-    --motion
-    use 'ggandor/leap.nvim'
+	--motion
+	use("ggandor/leap.nvim")
 
-    --dashboard
-    use {
-        'glepnir/dashboard-nvim',
-        requires = { 'nvim-tree/nvim-web-devicons' }
-    }
+	--dashboard
+	use({
+		"glepnir/dashboard-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 
-    use 'goolord/alpha-nvim'
+	use("goolord/alpha-nvim")
 
-    -- tmux plugins
-    use 'christoomey/vim-tmux-navigator'
+	-- tmux plugins
+	use("christoomey/vim-tmux-navigator")
 
-    -- fuzzy finder plugins
-    use {
-        'nvim-telescope/telescope.nvim',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+	-- fuzzy finder plugins
+	use({
+		"nvim-telescope/telescope.nvim",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-    use 'folke/trouble.nvim'
-    use 'rmagatti/goto-preview'
+	use("folke/trouble.nvim")
+	use("rmagatti/goto-preview")
 
-    --color theme plugins
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine'
-    })
-    use({
-        'oxfist/night-owl.nvim',
-        as = 'night-owl'
-    })
-    use({
-        'folke/tokyonight.nvim',
-        as = 'tokyonight',
+	--color theme plugins
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+	})
+	use({
+		"oxfist/night-owl.nvim",
+		as = "night-owl",
+	})
+	use({
+		"folke/tokyonight.nvim",
+		as = "tokyonight",
+	})
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
+	use({
+		"nyoom-engineering/oxocarbon.nvim",
+		as = "oxocarbon",
+	})
+	use({
+		"EdenEast/nightfox.nvim",
+		as = "nightfox",
+	})
 
-    })
-    use({
-        'catppuccin/nvim',
-        as = 'catppuccin',
-    })
-    use({
-        'nyoom-engineering/oxocarbon.nvim',
-        as = 'oxocarbon',
-    })
-    use({
-        'EdenEast/nightfox.nvim',
-        as = 'nightfox',
-    })
+	use({ "ellisonleao/gruvbox.nvim" })
+	require("gruvbox").setup({
+		transparent_mode = true,
+	})
+	-- nvim-tree plugins
+	use("nvim-tree/nvim-tree.lua")
+	use("nvim-tree/nvim-web-devicons")
 
-    -- nvim-tree plugins
-    use 'nvim-tree/nvim-tree.lua'
-    use 'nvim-tree/nvim-web-devicons'
+	-- lualine plugins
+	use("nvim-lualine/lualine.nvim")
 
-    -- lualine plugins
-    use 'nvim-lualine/lualine.nvim'
+	-- cmp plugins
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
 
-    -- cmp plugins
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
+	--snippets
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("rafamadriz/friendly-snippets")
 
-    --snippets
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'rafamadriz/friendly-snippets'
+	-- treesitter plugins
+	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 
-    -- treesitter plugins
-    use(
-        'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }
-    )
-    use({
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        after = "nvim-treesitter",
-        requires = "nvim-treesitter/nvim-treesitter",
-    })
+	-- undo plugins
+	use("mbbill/undotree")
 
-    -- undo plugins
-    use 'mbbill/undotree'
+	-- git plugins
+	use("rhysd/conflict-marker.vim")
+	use("tpope/vim-fugitive")
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				current_line_blame = true,
+				current_line_blame_opts = {
+					delay = 150,
+				},
+			})
+		end,
+	})
 
-    -- git plugins
-    use 'tpope/vim-fugitive'
-    use {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require('gitsigns').setup({
-                current_line_blame = true,
-                current_line_blame_opts = {
-                    delay = 150,
-                },
-            })
-        end
-    }
+	-- lsp plugins
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ -- Optional
+				"williamboman/mason.nvim",
+				run = function()
+					pcall(vim.api.nvim_command, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-    -- lsp plugins
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.api.nvim_command, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+		},
+	})
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
-        }
-    }
+	use({
+		"williamboman/mason.nvim",
+		run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+	})
+	use("kabouzeid/nvim-lspinstall")
+	-- autopair plugins
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
 
-    use {
-        "williamboman/mason.nvim",
-        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-    }
-    use 'kabouzeid/nvim-lspinstall'
-    -- autopair plugins
-    use 'windwp/nvim-autopairs'
-    use 'windwp/nvim-ts-autotag'
+	--debugger
+	use({ "mfussenegger/nvim-dap", opt = true, module = { "dap" }, disable = false })
 
-    --debugger
-    use { 'mfussenegger/nvim-dap',
-        opt = true,
-        module = { 'dap' },
-        disable = false,
-    }
+	use("rcarriga/nvim-dap-ui")
+	use("leoluz/nvim-dap-go")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
+	use("mxsdev/nvim-dap-vscode-js")
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	})
+	--comment plugins
 
+	--command line plugins
+	-- use({
+	--     'folke/noice.nvim',
+	--     requires = {
+	--         'MunifTanjim/nui.nvim',
+	--     }
+	-- })
+	-- use 'rcarriga/nvim-notify'
 
-    use 'rcarriga/nvim-dap-ui'
-    use 'leoluz/nvim-dap-go'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
-    use "mxsdev/nvim-dap-vscode-js"
-    use {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-    }
-    --comment plugins
+	-- lsp formatting
+	use("jose-elias-alvarez/null-ls.nvim")
 
-    --command line plugins
-    use({
-        'folke/noice.nvim',
-        requires = {
-            'MunifTanjim/nui.nvim',
-        }
-    })
-    use 'rcarriga/nvim-notify'
+	-- SSH plugins
+	use({
+		"chipsenkbeil/distant.nvim",
+		branch = "v0.2",
+		config = function()
+			require("distant").setup({
+				["*"] = require("distant.settings").chip_default(),
+			})
+		end,
+	})
 
+	--session manager
 
+	--folder opener
+	-- use 'willthbill/opener.nvim'
 
-    -- lsp formatting
-    use 'jose-elias-alvarez/null-ls.nvim'
+	--indent lines
+	-- use 'lukas-reineke/indent-blankline.nvim'
 
-    -- SSH plugins
-    use {
-        'chipsenkbeil/distant.nvim',
-        branch = 'v0.2',
-        config = function()
-            require('distant').setup {
-                ['*'] = require('distant.settings').chip_default()
-            }
-        end
-    }
+	--ChatGPT plugin
+	--use({
+	--'jackMort/ChatGPT.nvim',
+	--requires = {
+	--'MunifTanjim/nui.nvim',
+	--'nvim-lua/plenary.nvim',
+	--'nvim-telescope/telescope.nvim'
+	--}
+	--})
+	--refactoring
+	-- use "ThePrimeagen/refactoring.nvim"
 
+	--surround nvim
+	use("tpope/vim-surround")
 
-    --session manager
+	-- session manager
+	use({
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+			})
+		end,
+	})
+	use("JoosepAlviste/nvim-ts-context-commentstring") -- Changes commentstring to use based on cursor position
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup({
+				padding = true,
+				sticky = true,
+				ignore = nil,
+				toggler = { line = "<leader>cc", block = "<leader>cbc" },
+				opleader = { line = "<leader>c", block = "<leader>cb" },
+				extra = { above = "<leader>cO", below = "<leader>co", eol = "<leader>cA" },
+				mappings = { basic = true, extra = true },
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+				post_hook = nil,
+			})
+		end,
+	})
 
-    --folder opener
-    use 'willthbill/opener.nvim'
+	-- scroll animation
+	use({ "echasnovski/mini.nvim", branch = "stable" })
 
+	--navigation
+	use("https://gitlab.com/yorickpeterse/nvim-window.git")
 
-    --indent lines
-    -- use 'lukas-reineke/indent-blankline.nvim'
+	--window dimmer
+	use("miversen33/sunglasses.nvim")
 
+	--markdown previewer
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
-    --ChatGPT plugin
-    --use({
-    --'jackMort/ChatGPT.nvim',
-    --requires = {
-    --'MunifTanjim/nui.nvim',
-    --'nvim-lua/plenary.nvim',
-    --'nvim-telescope/telescope.nvim'
-    --}
-    --})
-    --refactoring
-    use "ThePrimeagen/refactoring.nvim"
-
-
-    --surround nvim
-    use("tpope/vim-surround")
-
-    -- session manager
-    use {
-        "rmagatti/auto-session",
-        config = function()
-            require("auto-session").setup {
-                log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-            }
-        end
-    }
-    use("JoosepAlviste/nvim-ts-context-commentstring") -- Changes commentstring to use based on cursor position
-    use({
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup({
-                padding = true,
-                sticky = true,
-                ignore = nil,
-                toggler = { line = "<leader>cc", block = "<leader>cbc" },
-                opleader = { line = "<leader>c", block = "<leader>cb" },
-                extra = { above = "<leader>cO", below = "<leader>co", eol = "<leader>cA" },
-                mappings = { basic = true, extra = true },
-                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-                post_hook = nil,
-            })
-        end,
-    })
-
-
-    -- scroll animation
-    use { 'echasnovski/mini.nvim', branch = 'stable' }
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 end)
