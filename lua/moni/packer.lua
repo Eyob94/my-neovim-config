@@ -4,14 +4,6 @@ return require("packer").startup(function(use)
 	--motion
 	use("ggandor/leap.nvim")
 
-	--dashboard
-	use({
-		"glepnir/dashboard-nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
-
-	use("goolord/alpha-nvim")
-
 	-- tmux plugins
 	use("christoomey/vim-tmux-navigator")
 
@@ -22,13 +14,14 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-	use("folke/trouble.nvim")
-	use("rmagatti/goto-preview")
-
 	--color theme plugins
 	use({
 		"rose-pine/neovim",
 		as = "rose-pine",
+	})
+	require("rose-pine").setup({
+		disable_background = true,
+		disable_float_background = true,
 	})
 	use({
 		"oxfist/night-owl.nvim",
@@ -37,6 +30,9 @@ return require("packer").startup(function(use)
 	use({
 		"folke/tokyonight.nvim",
 		as = "tokyonight",
+	})
+	require("tokyonight").setup({
+		transparent = true,
 	})
 	use({
 		"catppuccin/nvim",
@@ -56,8 +52,8 @@ return require("packer").startup(function(use)
 		transparent_mode = true,
 	})
 	-- nvim-tree plugins
-	use("nvim-tree/nvim-tree.lua")
-	use("nvim-tree/nvim-web-devicons")
+	-- use("nvim-tree/nvim-tree.lua")
+	-- use("nvim-tree/nvim-web-devicons")
 
 	-- lualine plugins
 	use("nvim-lualine/lualine.nvim")
@@ -126,6 +122,7 @@ return require("packer").startup(function(use)
 		run = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	})
 	use("kabouzeid/nvim-lspinstall")
+
 	-- autopair plugins
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
@@ -143,50 +140,9 @@ return require("packer").startup(function(use)
 		opt = true,
 		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	})
-	--comment plugins
-
-	--command line plugins
-	-- use({
-	--     'folke/noice.nvim',
-	--     requires = {
-	--         'MunifTanjim/nui.nvim',
-	--     }
-	-- })
-	-- use 'rcarriga/nvim-notify'
 
 	-- lsp formatting
 	use("jose-elias-alvarez/null-ls.nvim")
-
-	-- SSH plugins
-	use({
-		"chipsenkbeil/distant.nvim",
-		branch = "v0.2",
-		config = function()
-			require("distant").setup({
-				["*"] = require("distant.settings").chip_default(),
-			})
-		end,
-	})
-
-	--session manager
-
-	--folder opener
-	-- use 'willthbill/opener.nvim'
-
-	--indent lines
-	-- use 'lukas-reineke/indent-blankline.nvim'
-
-	--ChatGPT plugin
-	--use({
-	--'jackMort/ChatGPT.nvim',
-	--requires = {
-	--'MunifTanjim/nui.nvim',
-	--'nvim-lua/plenary.nvim',
-	--'nvim-telescope/telescope.nvim'
-	--}
-	--})
-	--refactoring
-	-- use "ThePrimeagen/refactoring.nvim"
 
 	--surround nvim
 	use("tpope/vim-surround")
@@ -219,9 +175,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- scroll animation
-	use({ "echasnovski/mini.nvim", branch = "stable" })
-
 	--navigation
 	use("https://gitlab.com/yorickpeterse/nvim-window.git")
 
@@ -229,12 +182,6 @@ return require("packer").startup(function(use)
 	use("miversen33/sunglasses.nvim")
 
 	--markdown previewer
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
 
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -244,4 +191,7 @@ return require("packer").startup(function(use)
 		end,
 		ft = { "markdown" },
 	})
+
+	-- Discord presence
+	use("andweeb/presence.nvim")
 end)

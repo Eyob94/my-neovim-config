@@ -20,7 +20,7 @@ require("null-ls").setup({
 		end
 	end,
 	sources = {
-		formatting.prettierd,
+		formatting.prettier,
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.black,
@@ -30,14 +30,17 @@ require("null-ls").setup({
 		formatting.lua_format,
 		formatting.sqlfmt,
 		formatting.clang_format,
-        formatting.beautysh,
+		formatting.beautysh,
+		formatting.csharpier,
 
 		diagnostics.ruff,
 		diagnostics.eslint_d,
 		diagnostics.golangci_lint,
 		diagnostics.cpplint,
 		diagnostics.sqlfluff,
+        diagnostics.semgrep,
 
+		-- code_actions.semgrep,
 		code_actions.eslint_d,
 		code_actions.impl,
 	},

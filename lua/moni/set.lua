@@ -20,7 +20,7 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.opt.smartcase = false
+vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true

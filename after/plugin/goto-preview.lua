@@ -1,1 +1,1 @@
-require('goto-preview').setup {}
+-- require('goto-preview').setup {}

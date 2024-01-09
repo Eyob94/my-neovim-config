@@ -3,9 +3,6 @@ vim.g.mapleader = " "
 -- .netrw configs
 vim.keymap.set("n", "<leader>rw", vim.cmd.Ex)
 
--- cmdline entry
-vim.keymap.set("n", ";", ":")
-
 -- Navigate buffers
 vim.keymap.set("n", "<Tab>j", ":bnext<CR>")
 vim.keymap.set("n", "<Tab>k", ":bprevious<CR>")
@@ -64,11 +61,6 @@ vim.keymap.set("n", "<leader>m", "M")
 -- vim.keymap.set('n', 'cj', 'ch')
 -- vim.keymap.set('n', 'ck', 'ch')
 
--- Nvim Tree Keymaps
-vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", opts)
-vim.keymap.set("i", "<C-b>", "<cmd>:NvimTreeToggle<CR>", opts)
-vim.keymap.set("v", "<C-b>", ":NvimTreeToggle<CR>", opts)
-
 --Clipboard remaps
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
@@ -122,13 +114,5 @@ vim.keymap.set("n", "gpd", '<cmd>lua require("goto-preview").goto_preview_defini
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
--- navigate search
-
--- trouble
-
-vim.keymap.set("n", "<leader>tl", "<cmd>TroubleToggle<cr>", opts)
-
 --wrapping
 vim.keymap.set("n", "<M-z>", "<cmd>set wrap!<CR>", opts)
-
---treesitter textobjects
