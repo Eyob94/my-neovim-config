@@ -22,6 +22,7 @@ end)
 
 lsp.ensure_installed({
 	"bashls",
+    "bufls",
 	"clangd",
 	"cssls",
 	"dockerls",
@@ -32,7 +33,6 @@ lsp.ensure_installed({
 	"jsonls",
     "svelte",
 	"pyright",
-	"rust_analyzer",
 	"sqlls",
 	"tsserver",
 	"vimls",
@@ -47,7 +47,6 @@ lsp.ensure_installed({
 --     servers = {
 --         ['lua_ls'] = { 'lua' },
 --         ['pyright'] = { 'python' },
---         ['rust_analyzer'] = { 'rust' },
 --         ['null-ls'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
 --         ['gopls'] = { 'go' },
 --         ['gofmt'] = { 'go' },

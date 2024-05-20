@@ -20,7 +20,7 @@ require("null-ls").setup({
 		end
 	end,
 	sources = {
-		formatting.prettier,
+		formatting.prettierd,
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.black,
@@ -32,6 +32,9 @@ require("null-ls").setup({
 		formatting.clang_format,
 		formatting.beautysh,
 		formatting.csharpier,
+        formatting.yamlfmt,
+        formatting.taplo,
+
 
 		diagnostics.ruff,
 		diagnostics.eslint_d,

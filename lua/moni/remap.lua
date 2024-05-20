@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader>rw", vim.cmd.Ex)
 -- Navigate buffers
 vim.keymap.set("n", "<Tab>j", ":bnext<CR>")
 vim.keymap.set("n", "<Tab>k", ":bprevious<CR>")
-vim.keymap.set("n", "<M-w>", "<C-w>")
+-- vim.keymap.set("n", "<M-w>", "<C-w>")
 
 vim.keymap.set("n", "J", "<S-j>")
 --Code Block navigation
@@ -15,7 +15,7 @@ vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Navigation
 --map <silent> <leader>w :lua require('nvim-window').pick()<CR>
-vim.keymap.set("n", "<leader>w", "<cmd>lua require('nvim-window').pick()<CR>")
+-- vim.keymap.set("n", "<leader>w", "<cmd>lua require('nvim-window').pick()<CR>")
 -- vim.keymap.set('n', 'i', 'k')
 -- vim.keymap.set('n', 'j', 'h')
 -- vim.keymap.set('n', 'k', 'j')
@@ -75,7 +75,7 @@ vim.keymap.set("n", "<M-i>", "<cmd> TmuxNavigateUp<CR>")
 vim.keymap.set("n", "<M-l>", "<cmd> TmuxNavigateRight<CR>")
 
 -- debugging
-vim.keymap.set("n", "<M-b>", '<cmd>lua require("dap").continue()<CR>', opts)
+vim.keymap.set("n", "<M-d>", '<cmd>lua require("dap").continue()<CR>', opts)
 vim.keymap.set("n", "<M-x>", '<cmd>lua require("dap").toggle_breakpoint()<CR>', opts)
 vim.keymap.set("n", "<M-r>", '<cmd>lua require("dap").repl.open()<CR>', opts)
 vim.keymap.set("n", "<M-v>", '<cmd>lua require("dap").step_over()<CR>', opts)
@@ -116,3 +116,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
 --wrapping
 vim.keymap.set("n", "<M-z>", "<cmd>set wrap!<CR>", opts)
+
+
+-- test suite
+vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})

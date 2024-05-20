@@ -1,17 +1,16 @@
 local servers = {
-	-- 'pyright',
+	'pyright',
 	"clangd",
-	-- 'rust_analyzer',
 	"tsserver",
 	"gopls",
-	-- 'bashls',
+	'bashls',
 	"vimls",
 	"yamlls",
 	"jsonls",
 	"html",
 	"cssls",
 	"dockerls",
-	-- 'graphql',
+	'graphql',
 	"tailwindcss",
 }
 
