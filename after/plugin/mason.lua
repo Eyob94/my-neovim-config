@@ -1,17 +1,17 @@
 local servers = {
-	'pyright',
-	"clangd",
-	"tsserver",
-	"gopls",
-	'bashls',
-	"vimls",
-	"yamlls",
-	"jsonls",
-	"html",
-	"cssls",
-	"dockerls",
-	'graphql',
-	"tailwindcss",
+    'pyright',
+    "clangd",
+    "tsserver",
+    "gopls",
+    'bashls',
+    "vimls",
+    "yamlls",
+    "jsonls",
+    "html",
+    "cssls",
+    "dockerls",
+    'graphql',
+    "tailwindcss",
 }
 
 -- for _, server in pairs(servers) do
@@ -31,3 +31,13 @@ local servers = {
 -- 		end,
 -- 	})
 -- end
+--
+
+require("mason-lspconfig").setup({
+    handlers = {
+        rust_analyzer = function() end
+    }
+})
+--
+--
+--

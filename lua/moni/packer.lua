@@ -124,8 +124,7 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "williamboman/mason.nvim",
-        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        "williamboman/mason.nvim"
     })
     use("kabouzeid/nvim-lspinstall")
 
@@ -154,15 +153,15 @@ return require("packer").startup(function(use)
     use("tpope/vim-surround")
 
     -- session manager
-    use({
-        "rmagatti/auto-session",
-        config = function()
-            require("auto-session").setup({
-                log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-            })
-        end,
-    })
+    -- use({
+    --     "rmagatti/auto-session",
+    --     config = function()
+    --         require("auto-session").setup({
+    --             log_level = "error",
+    --             auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    --         })
+    --     end,
+    -- })
     use("JoosepAlviste/nvim-ts-context-commentstring") -- Changes commentstring to use based on cursor position
     use({
         "numToStr/Comment.nvim",
@@ -215,7 +214,6 @@ return require("packer").startup(function(use)
         requires = {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter",
             "nvim-neotest/neotest-jest",
         },
         -- config = function()
@@ -248,12 +246,19 @@ return require("packer").startup(function(use)
             require('github-theme').setup({
                 -- ...
             })
-
-            vim.cmd('colorscheme github_dark_high_contrast')
         end
     })
 
 
     -- Asynchronous task runner
     use { "nvim-neotest/nvim-nio" }
+
+    -- -- Reference count
+    -- use {
+    --     'Wansmer/symbol-usage.nvim',
+    --     event = 'BufReadPre', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+    --     config = function()
+    --         require('symbol-usage').setup()
+    --     end
+    -- }
 end)
