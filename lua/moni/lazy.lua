@@ -44,14 +44,29 @@ local plugins = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
+    {
+        "hrsh7th/cmp-nvim-lsp",
+        opts = {
+            setup = {
+                rust_analyzer = function()
+                    return true
+                end,
+            },
+        },
+    },
+    "L3MON4D3/LuaSnip", -- Required
 
-    -- snippets
-    "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
 
     -- syntax highlight and navigation
-    "nvim-treesitter/nvim-treesitter",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = function()
+            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+            ts_update()
+        end,
+    },
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- git plugins
@@ -68,7 +83,7 @@ local plugins = {
     {
         "williamboman/mason.nvim",
         build = function()
-            pcall(vim.cmd.nvim_commands, "MasonUpdate")
+            pcall(vim.api.nvim_command, "MasonUpdate")
         end
     },
 
@@ -118,12 +133,17 @@ local plugins = {
 
     --undo plugins
     "mbbill/undotree",
+
+
     {
-        "Wansmer/symbol-usage.nvim",
-        event = "BufReadPre",
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        }
     }
-
-
 }
 
 local opts = {}

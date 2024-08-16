@@ -119,4 +119,7 @@ vim.keymap.set("n", "<M-z>", "<cmd>set wrap!<CR>", opts)
 
 
 -- test suite
-vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tx", "<cmd>lua require('neotest').run.stop()<cr>", {})
