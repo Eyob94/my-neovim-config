@@ -123,3 +123,5 @@ vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tx", "<cmd>lua require('neotest').run.stop()<cr>", {})
+
+vim.api.nvim_set_keymap("n", "tf", "<cmd>lua require('flash').treesitter_search(opts)<cr>", opts)
