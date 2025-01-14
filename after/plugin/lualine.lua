@@ -44,7 +44,6 @@ require('lualine').setup {
                         z = { fg = colours.grey, bg = colours.bg },
                     },
                 },
-
                 globalstatus = true,
                 disabled_filetypes = { statusline = { "dashboard", "alpha" } },
             },

@@ -152,7 +152,7 @@ local plugins = {
         -- stylua: ignore
         keys = {
             { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "X",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
             { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
             { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
@@ -174,6 +174,87 @@ local plugins = {
         end,
     },
     "nvim-treesitter/nvim-treesitter-context",
+
+
+    -- Markdown
+    --
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+        },
+
+        opts = {
+            workspaces = {
+                {
+                    name = "journal",
+                    path = "~/vaults/journal"
+                },
+                {
+                    name = "business",
+                    path = "~/vaults/business"
+                },
+                {
+                    name = "work",
+                    path = "~/vaults/work",
+                    overrides = {
+                        notes_subdir = "notes",
+                    },
+                },
+            },
+
+        },
+
+        insert_markdown_table = function()
+            local get_size = function()
+                local INPUT_CANCELLED = "~~~INPUT-CANCELLED~~~"
+                local input = vim.fn.input { prompt = "Size of the table - columns by rows (e.g. 2x3)", cancelreturn = INPUT_CANCELLED }
+                if input == INPUT_CANCELLED then
+                    -- early return if the user cancels the input
+                    return nil, nil
+                end
+                local string_column, string_row = input:match("([^x]+)x([^x]+)")
+                return tonumber(string_column), tonumber(string_row)
+            end
+            local columns, rows = get_size();
+            if columns == nil or rows == nil or columns < 1 or rows < 1 then
+                vim.api.nvim_err_writeln("Invalid input. Please provide a valid size (e.g. 2x3)")
+                return
+            end
+
+            -- Create a row
+            -- @param row number
+            -- @param header boolean
+            local create_row = function(length, header)
+                local row = "|"
+                for _ = 1, length do
+                    row = row .. (header and " ---" or "   ") .. " |"
+                end
+                return row
+            end
+
+            local rows_table = {}
+
+            -- First row with header row
+            table.insert(rows_table, create_row(columns, false))
+            table.insert(rows_table, create_row(columns, true))
+            for _ = 2, rows do
+                table.insert(rows_table, create_row(columns, false))
+            end
+
+            vim.api.nvim_put(rows_table, "l", true, false)
+        end,
+        keys = {
+            { "t", mode = { "n", "x", "o" }, insert_markdown_table },
+        }
+
+    }
 }
 
 local opts = {}

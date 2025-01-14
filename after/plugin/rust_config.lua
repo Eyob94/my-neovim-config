@@ -10,7 +10,7 @@ vim.keymap.set(
     { silent = true, buffer = bufnr }
 )
 
-vim.keymap.set("n", "<S-k>", function()
+vim.keymap.set("n", "<leader>k", function()
     vim.cmd.RustLsp { 'hover', 'actions' }
 end
 )
