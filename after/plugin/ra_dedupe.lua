@@ -1,0 +1,21 @@
+-- local preferred = "rustup run stable rust-analyzer"
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     local bufnr = args.buf
+--     local ra = vim.lsp.get_active_clients({ bufnr = bufnr, name = "rust_analyzer" })
+--     if #ra <= 1 then return end
+--     local keep
+--     local kill = {}
+--     for _, c in ipairs(ra) do
+--       local cmd = table.concat(c.config.cmd or {}, " ")
+--       if cmd:find(preferred, 1, true) then
+--         keep = c
+--       else
+--         table.insert(kill, c)
+--       end
+--     end
+--     for _, c in ipairs(kill) do
+--       pcall(vim.lsp.stop_client, c.id)
+--     end
+--   end
+-- })

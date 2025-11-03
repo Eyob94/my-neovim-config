@@ -125,3 +125,13 @@ vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run(
 vim.api.nvim_set_keymap("n", "<leader>tx", "<cmd>lua require('neotest').run.stop()<cr>", {})
 
 vim.api.nvim_set_keymap("n", "tf", "<cmd>lua require('flash').treesitter_search(opts)<cr>", opts)
+
+vim.api.nvim_set_keymap("n", ";", ":", opts)
+vim.api.nvim_set_keymap("n", ",", ";", opts)
+vim.api.nvim_set_keymap("n", "H", "^", opts)
+vim.api.nvim_set_keymap("n", "L", "$", opts)
+vim.api.nvim_set_keymap("n", ":", ";", opts)
+
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", opts)
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)

@@ -1,1 +1,1 @@
-require('flash').toggle(true)
+-- require('flash').toggle(true)

@@ -31,8 +31,6 @@ lsp.ensure_installed({
 	"graphql",
 	"html",
 	"jsonls",
-    "svelte",
-	"pyright",
 	"sqlls",
 	"tsserver",
 	"vimls",

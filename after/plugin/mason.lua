@@ -35,7 +35,6 @@ local servers = {
 
 require("mason-lspconfig").setup({
     handlers = {
-        rust_analyzer = function() end
     }
 })
 --
